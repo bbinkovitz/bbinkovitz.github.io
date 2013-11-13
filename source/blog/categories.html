@@ -7,7 +7,14 @@ use:
 <h2>Categories</h2>
 
 <div>
+{# Count the array so we can avoid adding too many commas. #}
+{% set i = 0 %}
+
 {% for category,posts in data.posts_categories %}
 <a href="{{ site.url }}/blog/categories/{{ category|url_encode(true) }}">{{ category }}</a>
+  {% if data.posts_categories|length - 1 > i %}
+    •
+  {% endif %}
+  {% set i = i + 1 %}
 {% endfor %}
 </div>
