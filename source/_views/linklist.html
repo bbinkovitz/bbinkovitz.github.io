@@ -1,0 +1,7 @@
+{% macro linklist(list, url, delimiter) %}
+  {% for name,posts in list %}
+    {% spaceless %}
+        <a href="{{ url }}{{ name|url_encode(true) }}">{{ name }}</a>{% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
+    {% endspaceless %}
+  {% endfor %}
+{% endmacro %}
