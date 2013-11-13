@@ -10,6 +10,6 @@ use:
 <div>
   {% set url = "/blog/tags/" %}
   {% set list = data.posts_tags %}
-  {{ linklist.linklist(list, url) }}
+  {{ linklist.linklist(list, url, " ↂ ") }}
 
 </div>
