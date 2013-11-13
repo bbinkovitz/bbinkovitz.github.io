@@ -15,15 +15,19 @@ use:
         <div>
             {{ post.blocks.content|raw }}
         </div>
-        {% if post.meta.tags %}
-            <p class="tags">
-            Tags:
-            {% for tag in post.meta.tags %}
-            <a href="{{ site.url }}/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
+        {% import "linklist.html" as linklist %}
+        {% if post.meta.categories %}
+        <h4>Categories</h4>
+            <p class="categories">
+              {{ linklist.linklist(post.meta.categories, "/blog/categories/", " ፨ ") }}
             </p>
         {% endif %}
-    </article>
+        {% if post.meta.tags %}
+        <h4>Tags</h4>
+            <p class="tags">
+              {{ linklist.linklist(post.meta.tags, "/blog/tags/", " ↂ ") }}
+            </p>
+        {% endif %}    </article>
 {% endfor %}
 {% if page.pagination.previous_page or page.pagination.next_page %}
     <nav>

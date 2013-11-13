@@ -7,8 +7,5 @@ use:
 <h2>Categories</h2>
 {% import "linklist.html" as linklist %}
 <div>
-  {% set url = "/blog/categories/" %}
-  {% set list = data.posts_categories %}
-  {{ linklist.linklist(list, url, " ፨ ") }}
-
+  {{ linklist.linklist(data.posts_categories, "/blog/categories/", " ፨ ") }}
 </div>

@@ -11,18 +11,13 @@
         {% if page.categories %}
         <h4>Categories</h4>
             <p class="categories">
-              {% set url = "/blog/categories/" %}
-              {% set list = page.categories %}
-              {{ linklist.linklist(list, url, " ፨ ") }}
+              {{ linklist.linklist(page.categories, "/blog/categories/", " ፨ ") }}
             </p>
         {% endif %}
         {% if page.tags %}
         <h4>Tags</h4>
             <p class="tags">
-              {% import "linklist.html" as linklist %}
-              {% set url = "/blog/tags/" %}
-              {% set list = page.tags %}
-              {{ linklist.linklist(list, url, " ↂ ") }}
+              {{ linklist.linklist(page.tags, "/blog/tags/", " ↂ ") }}
             </p>
         {% endif %}
 

@@ -8,8 +8,5 @@ use:
 
 {% import "linklist.html" as linklist %}
 <div>
-  {% set url = "/blog/tags/" %}
-  {% set list = data.posts_tags %}
-  {{ linklist.linklist(list, url, " ↂ ") }}
-
+  {{ linklist.linklist(data.posts_tags, "/blog/tags/", " ↂ ") }}
 </div>
