@@ -9,18 +9,18 @@
         </div>
         {% if page.categories %}
             <p class="categories">
-            Categories:
-            {% for category in page.categories %}
-            <a href="{{ site.url }}/blog/categories/{{ category|url_encode(true) }}">{{ category }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
+              {% import "linklist.html" as linklist %}
+              {% set url = "/blog/categories/" %}
+              {% set list = data.posts_categories %}
+              {{ linklist.linklist(list, url, " + ") }}
             </p>
         {% endif %}
         {% if page.tags %}
             <p class="tags">
-            Tags:
-            {% for tag in page.tags %}
-            <a href="{{ site.url }}/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
+              {% import "linklist.html" as linklist %}
+              {% set url = "/blog/tags/" %}
+              {% set list = data.posts_tags %}
+              {{ linklist.linklist(list, url, " + ") }}
             </p>
         {% endif %}
 
