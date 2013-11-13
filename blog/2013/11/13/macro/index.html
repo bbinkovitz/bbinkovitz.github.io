@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>You had me at hello, world. &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
+        <title>Macros with Twig. &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -45,10 +45,30 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2>You had me at hello, world. <small>post</small></h2>
+            <h2>Macros with Twig. <small>post</small></h2>
         </header>
         <div>
-            <p>Today I started a blog with <a href="http://sculpin.io/">Sculpin</a> and <a href="http://pages.github.com/">GitHub Pages</a>. How exciting.</p>
+            <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
+
+<pre><code class="php">{% macro linklist(list, url, delimiter) %}
+  {% for name,posts in list %}
+    {% spaceless %}
+        &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
+          {% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
+    {% endspaceless %}
+  {% endfor %}
+{% endmacro %}
+</code></pre>
+
+<p>The way to use it is like this:</p>
+
+<pre><code class="php">  {% import "linklist.html" as linklist %}
+  {% set url = "/blog/tags/" %}
+  {{% set list = data.posts_tags %}
+  {{ linklist.linklist(list, url, " ↂ ") }}
+</code></pre>
+
+<p>To see what it outputs, take a look at <a href="/blog/tags">my tags page</a> or <a href="/blog/categories">my categories page</a></p>
 
         </div>
                     <p class="categories">
@@ -60,8 +80,8 @@
         
                     <nav class="article">
                 <ul>
-                                            <li>Next: <a class="next" href="/blog/2013/11/13/macro" title="Macros with Twig."><span class="title">Macros with Twig.</span></a></li>
-                                                        </ul>
+                                                                <li>Previous: <a class="previous" href="/blog/2013/11/12/hello-world" title="You had me at hello, world."><span class="title">You had me at hello, world.</span></a></li>
+                                    </ul>
             </nav>
             </article>
                 </div>

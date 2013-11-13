@@ -45,6 +45,38 @@
                 <div class="span8">
                         <article>
         <header>
+            <h2><a href="/blog/2013/11/13/macro">Macros with Twig.</a></h2>
+        </header>
+        <div>
+            <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
+
+<pre><code class="php">{% macro linklist(list, url, delimiter) %}
+  {% for name,posts in list %}
+    {% spaceless %}
+        &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
+          {% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
+    {% endspaceless %}
+  {% endfor %}
+{% endmacro %}
+</code></pre>
+
+<p>The way to use it is like this:</p>
+
+<pre><code class="php">  {% import "linklist.html" as linklist %}
+  {% set url = "/blog/tags/" %}
+  {{% set list = data.posts_tags %}
+  {{ linklist.linklist(list, url, " ↂ ") }}
+</code></pre>
+
+<p>To see what it outputs, take a look at <a href="/blog/tags">my tags page</a> or <a href="/blog/categories">my categories page</a></p>
+
+        </div>
+                    <p class="tags">
+            Tags:
+                        <a href="/blog/tags/macros">macros</a>,                         <a href="/blog/tags/exciting">exciting</a>                        </p>
+            </article>
+    <article>
+        <header>
             <h2><a href="/blog/2013/11/12/hello-world">You had me at hello, world.</a></h2>
         </header>
         <div>
@@ -76,7 +108,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/components/jquery/jquery.min.js"><\/script>')</script>
         <script src="/components/bootstrap/js/bootstrap.min.js"></script>
-
+                
                 <script src="/components/highlightjs/highlight.pack.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     </body>
