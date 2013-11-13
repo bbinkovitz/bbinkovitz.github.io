@@ -7,20 +7,22 @@
         <div>
             {{ page.blocks.content|raw }}
         </div>
+        {% import "linklist.html" as linklist %}
         {% if page.categories %}
+        <h4>Categories</h4>
             <p class="categories">
-              {% import "linklist.html" as linklist %}
               {% set url = "/blog/categories/" %}
-              {% set list = data.posts_categories %}
-              {{ linklist.linklist(list, url, " + ") }}
+              {% set list = page.categories %}
+              {{ linklist.linklist(list, url, " ፨ ") }}
             </p>
         {% endif %}
         {% if page.tags %}
+        <h4>Tags</h4>
             <p class="tags">
               {% import "linklist.html" as linklist %}
               {% set url = "/blog/tags/" %}
-              {% set list = data.posts_tags %}
-              {{ linklist.linklist(list, url, " + ") }}
+              {% set list = page.tags %}
+              {{ linklist.linklist(list, url, " ↂ ") }}
             </p>
         {% endif %}
 
