@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sculpin + Git = <?3
+title: Sculpin + Github Pages = <?3
 tags:
     - weird repo nesting
     - strange
