@@ -19,7 +19,7 @@ But in order to get Github Pages to work you have to have a certain, <em>other</
 
 A girl just can't win.
 
-But wait! What's that, you say? Show one face to Github, on the master branch, which is where it requires all your publishable stuff to go, and then show Sculpin a totally different face by using a different branch name for all its stuff?
+But wait! What's that, you say? Show one face to Github, on the master branch ([or maybe the gh-pages branch](https://help.github.com/articles/user-organization-and-project-pages)), which is where it requires all your publishable stuff to go, and then show Sculpin a totally different face by using a different branch name for all its stuff?
 
 Brilliant! But wait yet again! There's more, you say? The master branch with all the output stuff should go... <em>inside</em> a file on the sculpin branch?
 
