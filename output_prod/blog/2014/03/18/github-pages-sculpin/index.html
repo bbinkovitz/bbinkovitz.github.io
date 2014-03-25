@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sculpin + Github Pages = &lt;?3 &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="/components/highlightjs/styles/github.css" />
+        <style>
+        /** quick fix because bootstrap <pre> has a background-color. */
+        pre code { background-color: inherit; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/">Das Blag</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li><a href="/blog">Posts Archive</a></li>
+                                <li><a href="/blog/categories">Categories</a></li>
+                                <li><a href="/blog/tags">Tags</a></li>
+                                <li><a href="/about">About</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="mainContent container">
+            <div class="row-fluid">
+                <div class="span8">
+                        <article>
+        <header>
+            <h2>Sculpin + Github Pages = &lt;?3 <small>post</small></h2>
+        </header>
+        <div>
+            <p>So in order to get Sculpin to work, you have to have a certain file structure.</p>
+
+<p>But in order to get Github Pages to work you have to have a certain, <em>other</em>, file structure.</p>
+
+<p>A girl just can't win.</p>
+
+<p>But wait! What's that, you say? Show one face to Github, on the master branch (<a href="https://help.github.com/articles/user-organization-and-project-pages">or maybe the gh-pages branch</a>), which is where it requires all your publishable stuff to go, and then show Sculpin a totally different face by using a different branch name for all its stuff?</p>
+
+<p>Brilliant! But wait yet again! There's more, you say? The master branch with all the output stuff should go... <em>inside</em> a file on the sculpin branch?</p>
+
+<p>So, let me get this straight...</p>
+
+<pre>
+$ pwd
+/Users/binkovitz/bbinkovitz.github.io
+$ git branch
+* sculpin-source
+$ ls
+LICENSE     README.md   app     output_prod publish.sh  s3-publish.sh   s3.conf.dist    sculpin.json    sculpin.lock    source
+</pre>
+
+<p>...first I checkout branch sculpin-source and put all my Sculpin-friendly stuff in there and commit it...</p>
+
+<pre>
+$ cd output_prod/
+$ pwd
+/Users/binkovitz/bbinkovitz.github.io/output_prod
+$ git branch
+* master
+$ ls
+_posts      about       blog        components  css     favicon.ico index.html
+$
+</pre>
+
+<p>...and then after I generate my output, I go into that dir and commit that, and only that, to master?</p>
+
+<p>Okay if you say so.</p>
+
+        </div>
+                        <h4>Categories</h4>
+            <p class="categories">
+                    <a href="/blog/categories/sculpin">sculpin</a> ፨      <a href="/blog/categories/github">github</a> ፨      <a href="/blog/categories/blogging">blogging</a> ፨      <a href="/blog/categories/git">git</a>  
+            </p>
+                        <h4>Tags</h4>
+            <p class="tags">
+                    <a href="/blog/tags/weird%20repo%20nesting">weird repo nesting</a> ↂ      <a href="/blog/tags/strange">strange</a> ↂ      <a href="/blog/tags/but%20hey%20it%27s%20free">but hey it&#039;s free</a>  
+            </p>
+        
+                    <nav class="article">
+                <ul>
+                                                                <li>Previous: <a class="previous" href="/blog/2014/03/08/symfony-vary-multiple" title="Journey to the center of the repo"><span class="title">Journey to the center of the repo</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+                </div>
+                <div class="span4 sidebar">
+                    <div class="well">
+                        <h4>Das Blag <small>Beth&#039;s great Sculpin adventure</small></h4>
+                    </div>
+                    <div class="well sidebar-nav">
+                        <ul class="nav">
+                          <h4>Social</h4>
+                            <li><a href="http://twitter.com/bbinkovitz">@bbinkovitz</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="container">
+            &copy; bbinkovitz
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/components/jquery/jquery.min.js"><\/script>')</script>
+        <script src="/components/bootstrap/js/bootstrap.min.js"></script>
+                
+                <script src="/components/highlightjs/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
