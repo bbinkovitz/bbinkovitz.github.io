@@ -166,7 +166,8 @@ $this-&gt;assertEquals($response-&gt;headers-&gt;get('Vary', NULL, FALSE) , $res
         <div>
             <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
 
-<pre><code class="php">{% macro linklist(list, url, delimiter) %}
+<pre><code class="php">
+{% macro linklist(list, url, delimiter) %}
   {% for name,posts in list %}
     {% spaceless %}
         &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
@@ -174,14 +175,18 @@ $this-&gt;assertEquals($response-&gt;headers-&gt;get('Vary', NULL, FALSE) , $res
     {% endspaceless %}
   {% endfor %}
 {% endmacro %}
+
+
 </code></pre>
 
 <p>The way to use it is like this:</p>
 
-<pre><code class="php">  {% import "linklist.html" as linklist %}
+<pre><code class="php">
+  {% import "linklist.html" as linklist %}
   {% set url = "/blog/tags/" %}
-  {{% set list = data.posts_tags %}
+  {% set list = data.posts_tags %}
   {{ linklist.linklist(list, url, " ↂ ") }}
+
 </code></pre>
 
 <p>To see what it outputs, take a look at my tags and/or categories lists below.</p>
