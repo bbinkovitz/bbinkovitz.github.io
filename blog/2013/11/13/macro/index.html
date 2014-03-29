@@ -50,18 +50,16 @@
         <div>
             <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
 
-<pre><code class="php">
+<p>
 {% macro linklist(list, url, delimiter) %}
   {% for name,posts in list %}
     {% spaceless %}
-        &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
+        <a href="{{ url }}{{ name|url_encode(true) }}">{{ name }}</a>
           {% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
     {% endspaceless %}
   {% endfor %}
 {% endmacro %}
-
-
-</code></pre>
+</p>
 
 <p>The way to use it is like this:</p>
 
