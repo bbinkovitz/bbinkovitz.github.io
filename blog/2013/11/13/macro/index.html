@@ -50,8 +50,9 @@
         <div>
             <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
 
-<pre><code class="php">
-{% macro linklist(list, url, delimiter) %}
+<p></p>
+
+<pre><code class="php">{% macro linklist(list, url, delimiter) %}
   {% for name,posts in list %}
     {% spaceless %}
         &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
@@ -59,8 +60,9 @@
     {% endspaceless %}
   {% endfor %}
 {% endmacro %}
-
 </code></pre>
+
+<p></p>
 
 <p>The way to use it is like this:</p>
 
