@@ -45,6 +45,66 @@
                 <div class="span8">
                         <article>
         <header>
+            <h2><a href="/blog/2013/11/13/macro">Macros with Twig.</a></h2>
+        </header>
+        <div>
+            <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
+
+<pre><code class="php">
+{% macro linklist(list, url, delimiter) %}
+  {% for name,posts in list %}
+    {% spaceless %}
+        &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
+          {% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
+    {% endspaceless %}
+  {% endfor %}
+{% endmacro %}
+
+</code></pre>
+
+<p>The way to use it is like this:</p>
+
+<p></p>
+
+<pre><code class="php">  {% import "linklist.html" as linklist %}
+  {% set url = "/blog/tags/" %}
+  {% set list = data.posts_tags %}
+  {{ linklist.linklist(list, url, " ↂ ") }}
+</code></pre>
+
+<p></p>
+
+<p>To see what it outputs, take a look at my tags and/or categories lists below.</p>
+
+        </div>
+                        <h4>Categories</h4>
+            <p class="categories">
+                    <a href="/blog/categories/twig">twig</a> ፨      <a href="/blog/categories/templates">templates</a>  
+            </p>
+                        <h4>Tags</h4>
+            <p class="tags">
+                    <a href="/blog/tags/macros">macros</a> ↂ      <a href="/blog/tags/exciting">exciting</a>  
+            </p>
+            </article>
+    <article>
+        <header>
+            <h2><a href="/blog/2013/11/12/hello-world_1">You had me at hello, world.</a></h2>
+        </header>
+        <div>
+            <p>Today I started a blog with <a href="http://sculpin.io/">Sculpin</a> and <a href="http://pages.github.com/">GitHub Pages</a>. How exciting.</p>
+
+        </div>
+                        <h4>Categories</h4>
+            <p class="categories">
+                    <a href="/blog/categories/sculpin">sculpin</a> ፨      <a href="/blog/categories/github">github</a> ፨      <a href="/blog/categories/blogging">blogging</a>  
+            </p>
+                        <h4>Tags</h4>
+            <p class="tags">
+                    <a href="/blog/tags/hello%20world">hello world</a> ↂ      <a href="/blog/tags/exciting">exciting</a> ↂ      <a href="/blog/tags/links">links</a>  
+            </p>
+            </article>
+    <article>
+        <header>
             <h2><a href="/blog/2013/11/12/hello-world">You had me at hello, world.</a></h2>
         </header>
         <div>
@@ -72,10 +132,11 @@
                     <div class="well sidebar-nav">
                         <h4>Social</h4>
                         <ul class="nav">
-                            <li><a href="http://twitter.com/bbinkovitz">on twitter</a></li>
-                            <li><a href="http://drupal.org/u/bbinkovitz">on drupal.org</a></li>
-                            <li><a href="http://github.com/bbinkovitz">on github</a></li>
-                            <li><a href="http://linkedin.com/in/bbinkovitz/en">on linkedin</a></li>
+                            <li><a href="http://twitter.com/bbinkovitz">twitter</a></li>
+                            <li><a href="http://drupal.org/u/bbinkovitz">drupal</a></li>
+                            <li><a href="http://github.com/bbinkovitz">github</a></li>
+                            <li><a href="http://linkedin.com/in/bbinkovitz/en">linkedin</a></li>
+                            <li><a href="http://stackoverflow.com/users/1370106/beth">stackoverflow</a></li>
                         </ul>
                         <h4>Other Projects</h4>
                         <ul class="nav">

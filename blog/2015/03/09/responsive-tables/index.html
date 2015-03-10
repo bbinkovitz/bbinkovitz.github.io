@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Macros with Twig. &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
+        <title>Responsive Tables for Impatient People &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -45,51 +45,66 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2>Macros with Twig. <small>post</small></h2>
+            <h2>Responsive Tables for Impatient People <small>post</small></h2>
         </header>
         <div>
-            <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
+            <p>Responsive websites! We know how to do that! No more table-based layouts! Also no more denim scrunchies! The 90s are over! Tables are gone!</p>
 
-<pre><code class="php">
-{% macro linklist(list, url, delimiter) %}
-  {% for name,posts in list %}
-    {% spaceless %}
-        &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
-          {% if not loop.last %}{{ delimiter|default(", ") }}{% endif %}
-    {% endspaceless %}
-  {% endfor %}
-{% endmacro %}
+<p>Oh wait, well, except when we have actual tabular data. Then we, ah, well, um, fob it off on a front-end developer or something.</p>
 
+<p>For a long time I was afraid of responsive tables. When working on Agile projects I encouraged clients to de-prioritize stories about responsive-izing their data table, going against everything I believed and advocated about mobile-first development and design. I felt too rushed to play around with something I didn't really understand and had heard from others was complicated and scary.</p>
+
+<p>To make it worse, there's a bunch of ways to do responsive tables. <a href="http://exisweb.net/responsive-table-plugins-and-patterns">Like, too many.</a> The sheer number of options was the most intimidating thing about figuring out how to do it. I didn't want to wade through the choices, I just wanted someone to tell me the Best Way™ to do responsive tables. I don't know if there is a Best Way™ but after weighing the options and trying them out, I have a favorite way.</p>
+
+<h2>Turn your rows into cards.</h2>
+
+<p>It only takes a few lines of CSS to turn every table row into a card. It's so easy a cat rolling around on a keyboard could probably do it.</p>
+
+<p>This is the actual SASS that's controlling table row display on <a href="http://vegan-chicago.com">Chicago Vegan Guide</a>:</p>
+
+<pre><code>@media (max-width: $second_breakpoint) {
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        margin: .5em 0;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        position: relative;
+    }
+}
 </code></pre>
 
-<p>The way to use it is like this:</p>
+<p>That's it. For real. After that, I threw some styling on the field that I wanted to use as a "title" for the "card", and a border around each <code>&lt;tr&gt;</code> to make it look more like an actual card.</p>
 
-<p></p>
+<p>Here's how a few rows of the table look at wide sizes:
+<img src="/images/responsive-table-wide.png" alt="Tabular data in a table. Many rows, with several columns" /></p>
 
-<pre><code class="php">  {% import "linklist.html" as linklist %}
-  {% set url = "/blog/tags/" %}
-  {% set list = data.posts_tags %}
-  {{ linklist.linklist(list, url, " ↂ ") }}
-</code></pre>
-
-<p></p>
-
-<p>To see what it outputs, take a look at my tags and/or categories lists below.</p>
+<p>And here's how they look as "cards" when the screen narrows:
+<img src="images/responsive-table-narrow.png" alt="The same data now displayed as a series of cards. One column serves as the card title while the others are lower on the card." /></p>
 
         </div>
                         <h4>Categories</h4>
             <p class="categories">
-                    <a href="/blog/categories/twig">twig</a> ፨      <a href="/blog/categories/templates">templates</a>  
+                    <a href="/blog/categories/responsive%20design">responsive design</a> ፨      <a href="/blog/categories/sass%20and%20css">sass and css</a> ፨      <a href="/blog/categories/data%20visualization">data visualization</a>  
             </p>
                         <h4>Tags</h4>
             <p class="tags">
-                    <a href="/blog/tags/macros">macros</a> ↂ      <a href="/blog/tags/exciting">exciting</a>  
+                    <a href="/blog/tags/responsive%20tables">responsive tables</a> ↂ      <a href="/blog/tags/mobile%20first">mobile first</a>  
             </p>
         
                     <nav class="article">
                 <ul>
-                                            <li>Next: <a class="next" href="/blog/2014/03/08/symfony-vary-multiple" title="Journey to the center of the repo"><span class="title">Journey to the center of the repo</span></a></li>
-                                                                <li>Previous: <a class="previous" href="/blog/2013/11/12/hello-world_1" title="You had me at hello, world."><span class="title">You had me at hello, world.</span></a></li>
+                                                                <li>Previous: <a class="previous" href="/blog/2014/03/18/github-pages-sculpin" title="Sculpin + Github Pages = &lt;?3"><span class="title">Sculpin + Github Pages = &lt;?3</span></a></li>
                                     </ul>
             </nav>
             </article>
