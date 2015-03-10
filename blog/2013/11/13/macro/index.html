@@ -50,9 +50,8 @@
         <div>
             <p>Today I wrote my first macro for <a href="http://twig.sensiolabs.org">Twig</a>. It's pretty basic:</p>
 
-<p></p>
-
-<pre><code class="code">{% macro linklist(list, url, delimiter) %}
+<pre><code class="php">
+{% macro linklist(list, url, delimiter) %}
   {% for name,posts in list %}
     {% spaceless %}
         &lt;a href="{{ url }}{{ name|url_encode(true) }}"&gt;{{ name }}&lt;/a&gt;
@@ -60,15 +59,14 @@
     {% endspaceless %}
   {% endfor %}
 {% endmacro %}
-</code></pre>
 
-<p></p>
+</code></pre>
 
 <p>The way to use it is like this:</p>
 
 <p></p>
 
-<pre><code class="code">  {% import "linklist.html" as linklist %}
+<pre><code class="php">  {% import "linklist.html" as linklist %}
   {% set url = "/blog/tags/" %}
   {% set list = data.posts_tags %}
   {{ linklist.linklist(list, url, " ↂ ") }}
@@ -101,9 +99,16 @@
                         <h4>Das Blag <small>Beth&#039;s great Sculpin adventure</small></h4>
                     </div>
                     <div class="well sidebar-nav">
+                        <h4>Social</h4>
                         <ul class="nav">
-                          <h4>Social</h4>
-                            <li><a href="http://twitter.com/bbinkovitz">@bbinkovitz</a></li>
+                            <li><a href="http://twitter.com/bbinkovitz">on twitter</a></li>
+                            <li><a href="http://drupal.org/u/bbinkovitz">on drupal.org</a></li>
+                            <li><a href="http://github.com/bbinkovitz">on github</a></li>
+                            <li><a href="http://linkedin.com/in/bbinkovitz/en">on linkedin</a></li>
+                        </ul>
+                        <h4>Other Projects</h4>
+                        <ul class="nav">
+                            <li><a href="http://vegan-chicago.com">The Chicago Vegan Guide</a></li>
                         </ul>
                     </div>
                 </div>
