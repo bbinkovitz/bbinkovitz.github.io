@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
+        <title>Responsive Multi-Level Menu with Drupal&#039;s hierarchical pages. &mdash; Das Blag &mdash; Beth&#039;s great Sculpin adventure</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -45,7 +45,7 @@
                 <div class="span8">
                         <article>
         <header>
-            <h2><a href="/blog/2014/04/28/responsive-multi-level-menu">Responsive Multi-Level Menu with Drupal&#039;s hierarchical pages.</a></h2>
+            <h2>Responsive Multi-Level Menu with Drupal&#039;s hierarchical pages. <small>post</small></h2>
         </header>
         <div>
             <p>Today <a href="https://github.com/codrops/ResponsiveMultiLevelMenu/commit/bd7502e399bce3c92561f19ada52ddbfac8a27e6">my pull request</a> to the <a href="http://tympanus.net/codrops/2013/04/19/responsive-multi-level-menu/">Responsive Multi-Level Menu</a> <a href="https://github.com/codrops/ResponsiveMultiLevelMenu">Github repo</a> was merged. Exciting! It doesn't look like much (besides removing extra whitespace) but here's why the tiny new option I added was powerful.</p>
@@ -175,127 +175,14 @@
             <p class="tags">
                     <a href="/blog/tags/codrops">codrops</a> ↂ      <a href="/blog/tags/responsive%20multi-level%20menu">responsive multi-level menu</a> ↂ      <a href="/blog/tags/jQuery">jQuery</a>  
             </p>
+        
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="/blog/2014/11/08/beyond-being-excellent" title="Responsive Multi-Level Menu with Drupal&#039;s hierarchical pages."><span class="title">Responsive Multi-Level Menu with Drupal&#039;s hierarchical pages.</span></a></li>
+                                                                <li>Previous: <a class="previous" href="/blog/2014/03/18/github-pages-sculpin" title="Sculpin + Github Pages = &lt;?3"><span class="title">Sculpin + Github Pages = &lt;?3</span></a></li>
+                                    </ul>
+            </nav>
             </article>
-    <article>
-        <header>
-            <h2><a href="/blog/2014/03/18/github-pages-sculpin">Sculpin + Github Pages = &lt;?3</a></h2>
-        </header>
-        <div>
-            <p>So in order to get Sculpin to work, you have to have a certain file structure.</p>
-
-<p>But in order to get Github Pages to work you have to have a certain, <em>other</em>, file structure.</p>
-
-<p>A girl just can't win.</p>
-
-<p>But wait! What's that, you say? Show one face to Github, on the master branch (<a href="https://help.github.com/articles/user-organization-and-project-pages">or maybe the gh-pages branch</a>), which is where it requires all your publishable stuff to go, and then show Sculpin a totally different face by using a different branch name for all its stuff?</p>
-
-<p>Brilliant! But wait yet again! There's more, you say? The master branch with all the output stuff should go... <em>inside</em> a file on the sculpin branch?</p>
-
-<p>So, let me get this straight...</p>
-
-<pre>
-$ pwd
-/Users/binkovitz/bbinkovitz.github.io
-$ git branch
-* sculpin-source
-$ ls
-LICENSE     README.md   app     output_prod publish.sh  s3-publish.sh   s3.conf.dist    sculpin.json    sculpin.lock    source
-</pre>
-
-<p>...first I checkout branch sculpin-source and put all my Sculpin-friendly stuff in there and commit it...</p>
-
-<pre>
-$ cd output_prod/
-$ pwd
-/Users/binkovitz/bbinkovitz.github.io/output_prod
-$ git branch
-* master
-$ ls
-_posts      about       blog        components  css     favicon.ico index.html
-$
-</pre>
-
-<p>...and then after I generate my output, I go into that dir and commit that, and only that, to master?</p>
-
-<p>Okay if you say so.</p>
-
-        </div>
-                        <h4>Categories</h4>
-            <p class="categories">
-                    <a href="/blog/categories/sculpin">sculpin</a> ፨      <a href="/blog/categories/github">github</a> ፨      <a href="/blog/categories/blogging">blogging</a> ፨      <a href="/blog/categories/git">git</a>  
-            </p>
-                        <h4>Tags</h4>
-            <p class="tags">
-                    <a href="/blog/tags/weird%20repo%20nesting">weird repo nesting</a> ↂ      <a href="/blog/tags/strange">strange</a> ↂ      <a href="/blog/tags/but%20hey%20it%27s%20free">but hey it&#039;s free</a>  
-            </p>
-            </article>
-    <article>
-        <header>
-            <h2><a href="/blog/2014/03/08/symfony-vary-multiple">Journey to the center of the repo</a></h2>
-        </header>
-        <div>
-            <p>This week I got a <a href="https://github.com/symfony/symfony/commit/3a4a3cbe303cfe71f40c1d3425882e1426a6bcfc">little bit of code</a> into the <a href="http://symfony.com/">Symfony</a> repo.</p>
-
-<p>I was trying to set multiple vary headers and running into issues. I checked <a href="http://symfony.com/doc/current/book/http_cache.html">the official docs</a> to make sure that multiple headers were supported, and that I was doing it right. There was a code example provided and everything, but it just wasn't working.</p>
-
-<p>How to set vary headers according to the docs:</p>
-
-<pre><code class="php">// set one vary header
-$response-&gt;setVary('Accept-Encoding');
-
-// set multiple vary headers
-$response-&gt;setVary(array('Accept-Encoding', 'User-Agent'));
-</code></pre>
-
-<p>I had written a failing PHPunit test to check that multiple vary headers were indeed being set and I couldn't find out why it was failing.</p>
-
-<pre><code class="php">$response = new Response();
-$vary = array(
-    'Accept-Language',
-    'User-Agent',
-    'X-foo',
-);
-$response-&gt;headers-&gt;set('Vary', $vary);
-$this-&gt;assertEquals($response-&gt;headers-&gt;get('Vary', NULL, FALSE) , $response-&gt;getVary(), '-&gt;getVary() parses multiple header name values in arrays');
-</code></pre>
-
-<p>I did this because I was in a dev environment that didn't have the Varnish setup that was being used in production, which is where the headers would normally have been set for this site, and I wanted to prove to the client that setting multiple headers would work. But according to my test, they didn't?</p>
-
-<p>Turned out, the vary headers were being <em>set</em> just fine. The problem was that when <em>get</em>ting them, only the first was taken into account. Furthermore, there was this test that made me think there was some confusion somewhere about how getVary() was supposed to work:</p>
-
-<pre><code class="php">$this-&gt;assertEquals(array('Accept-Language', 'User-Agent'), $response-&gt;getVary(), '-&gt;setVary() doesn\'t change the Vary header if replace is set to false');
-</code></pre>
-
-<p>So I fixed the test to actually replace when replace is set to false, as well as adding some tests to verify that multiple headers were retrieved faithfully. Then I fixed the getVary() code itself to return an array when appropriate.</p>
-
-<p>Next I had to navigate Symfony's somewhat byzantine <a href="http://symfony.com/doc/current/contributing/code/patches.html">pull request instructions</a>. The instructions are titled, somewhat misleadingly, "Submitting a Patch". Turns out you're not really supposed to submit a patch. To me it seems like there's an overwhelming amount of unnecessary instructions telling the would-be contributor to create patches, create a fork, rebase your patches onto a branch of your fork, etc.</p>
-
-<p>In the end, the rebasing and patch-formatting and whatnot seem to be pretty unnecessary. Unless you did something weird or fancy, a normal pull request on a properly-named branch of a fork of the project would be fine.</p>
-
-<p>I was also somewhat confused by the requirement to submit the PR to the "the oldest but still maintained version of Symfony where the bug happens". There doesn't seem to be an obvious place to figure out which version that might be, but I just submitted against 2.3 and that seemed to be fine.</p>
-
-<p>I also made the mistake of submitting a PR with multiple commits (I make a habit of committing tests separately from actual code changes). They closed my PR without merging and instead squashed my commits into one before applying them to the 2.3 branch.</p>
-
-<p>I also added extra spaces to the info table they ask you to create, not realizing that even though that made it look fine in Github, it looked all weird in the Git log. And I don't think it was even necessary to make it look nice in Github.</p>
-
-<p>The maintainers seem nice though. I got a thumbs up emoji in my PR from <a href="https://github.com/cordoval">cordoval</a> which pretty much made my day.</p>
-
-<p>Anyway, that's the journey of my little bit of code upon the river of the Symfony PR process, into the heart of the 2.3 branch.</p>
-
-        </div>
-                        <h4>Categories</h4>
-            <p class="categories">
-                    <a href="/blog/categories/symfony">symfony</a> ፨      <a href="/blog/categories/open%20source">open source</a>  
-            </p>
-                        <h4>Tags</h4>
-            <p class="tags">
-                    <a href="/blog/tags/HTTP%20headers">HTTP headers</a> ↂ      <a href="/blog/tags/pull%20request">pull request</a> ↂ      <a href="/blog/tags/contributing">contributing</a>  
-            </p>
-            </article>
-    <nav>
-        <a href="/">Newer Posts</a><br />
-        <a href="/page/3">Older Posts</a><br />
-    </nav>
                 </div>
                 <div class="span4 sidebar">
                     <div class="well">
