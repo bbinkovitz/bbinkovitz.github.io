@@ -26,3 +26,28 @@ footer.container {
         padding-bottom: 40px;
     }
 }
+
+.youtubeBlock {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.youtubeBlock iframe,
+.youtubeBlock object,
+.youtubeBlock embed
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.ccm-block-edit[data-block-type-handle="youtube"] .ccm-edit-mode-disabled-item {
+    width:100% !important;
+    height:0 !important;
+    padding-bottom: 56.25%;
+}

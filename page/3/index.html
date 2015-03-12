@@ -45,6 +45,69 @@
                 <div class="span8">
                         <article>
         <header>
+            <h2><a href="/blog/2014/03/08/symfony-vary-multiple">Journey to the center of the repo</a></h2>
+        </header>
+        <div>
+            <p>This week I got a <a href="https://github.com/symfony/symfony/commit/3a4a3cbe303cfe71f40c1d3425882e1426a6bcfc">little bit of code</a> into the <a href="http://symfony.com/">Symfony</a> repo.</p>
+
+<p>I was trying to set multiple vary headers and running into issues. I checked <a href="http://symfony.com/doc/current/book/http_cache.html">the official docs</a> to make sure that multiple headers were supported, and that I was doing it right. There was a code example provided and everything, but it just wasn't working.</p>
+
+<p>How to set vary headers according to the docs:</p>
+
+<pre><code class="php">// set one vary header
+$response-&gt;setVary('Accept-Encoding');
+
+// set multiple vary headers
+$response-&gt;setVary(array('Accept-Encoding', 'User-Agent'));
+</code></pre>
+
+<p>I had written a failing PHPunit test to check that multiple vary headers were indeed being set and I couldn't find out why it was failing.</p>
+
+<pre><code class="php">$response = new Response();
+$vary = array(
+    'Accept-Language',
+    'User-Agent',
+    'X-foo',
+);
+$response-&gt;headers-&gt;set('Vary', $vary);
+$this-&gt;assertEquals($response-&gt;headers-&gt;get('Vary', NULL, FALSE) , $response-&gt;getVary(), '-&gt;getVary() parses multiple header name values in arrays');
+</code></pre>
+
+<p>I did this because I was in a dev environment that didn't have the Varnish setup that was being used in production, which is where the headers would normally have been set for this site, and I wanted to prove to the client that setting multiple headers would work. But according to my test, they didn't?</p>
+
+<p>Turned out, the vary headers were being <em>set</em> just fine. The problem was that when <em>get</em>ting them, only the first was taken into account. Furthermore, there was this test that made me think there was some confusion somewhere about how getVary() was supposed to work:</p>
+
+<pre><code class="php">$this-&gt;assertEquals(array('Accept-Language', 'User-Agent'), $response-&gt;getVary(), '-&gt;setVary() doesn\'t change the Vary header if replace is set to false');
+</code></pre>
+
+<p>So I fixed the test to actually replace when replace is set to false, as well as adding some tests to verify that multiple headers were retrieved faithfully. Then I fixed the getVary() code itself to return an array when appropriate.</p>
+
+<p>Next I had to navigate Symfony's somewhat byzantine <a href="http://symfony.com/doc/current/contributing/code/patches.html">pull request instructions</a>. The instructions are titled, somewhat misleadingly, "Submitting a Patch". Turns out you're not really supposed to submit a patch. To me it seems like there's an overwhelming amount of unnecessary instructions telling the would-be contributor to create patches, create a fork, rebase your patches onto a branch of your fork, etc.</p>
+
+<p>In the end, the rebasing and patch-formatting and whatnot seem to be pretty unnecessary. Unless you did something weird or fancy, a normal pull request on a properly-named branch of a fork of the project would be fine.</p>
+
+<p>I was also somewhat confused by the requirement to submit the PR to the "the oldest but still maintained version of Symfony where the bug happens". There doesn't seem to be an obvious place to figure out which version that might be, but I just submitted against 2.3 and that seemed to be fine.</p>
+
+<p>I also made the mistake of submitting a PR with multiple commits (I make a habit of committing tests separately from actual code changes). They closed my PR without merging and instead squashed my commits into one before applying them to the 2.3 branch.</p>
+
+<p>I also added extra spaces to the info table they ask you to create, not realizing that even though that made it look fine in Github, it looked all weird in the Git log. And I don't think it was even necessary to make it look nice in Github.</p>
+
+<p>The maintainers seem nice though. I got a thumbs up emoji in my PR from <a href="https://github.com/cordoval">cordoval</a> which pretty much made my day.</p>
+
+<p>Anyway, that's the journey of my little bit of code upon the river of the Symfony PR process, into the heart of the 2.3 branch.</p>
+
+        </div>
+                        <h4>Categories</h4>
+            <p class="categories">
+                    <a href="/blog/categories/symfony">symfony</a> ፨      <a href="/blog/categories/open%20source">open source</a>  
+            </p>
+                        <h4>Tags</h4>
+            <p class="tags">
+                    <a href="/blog/tags/HTTP%20headers">HTTP headers</a> ↂ      <a href="/blog/tags/pull%20request">pull request</a> ↂ      <a href="/blog/tags/contributing">contributing</a>  
+            </p>
+            </article>
+    <article>
+        <header>
             <h2><a href="/blog/2013/11/13/macro">Macros with Twig.</a></h2>
         </header>
         <div>
