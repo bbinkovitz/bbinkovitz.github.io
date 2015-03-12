@@ -91,8 +91,6 @@ where the new "Parent Item One" link at the top would take us to, say, example.c
 
 With this modification, using Responsive Multi-Level Menu on Drupal-generated menus becomes as easy as theme_preprocessing your menu items to have the classes the RMLM library expects, and turning on the new setting I provided.
 
-
-
 [1]: https://github.com/codrops/ResponsiveMultiLevelMenu/commit/bd7502e399bce3c92561f19ada52ddbfac8a27e6
 [2]: http://tympanus.net/codrops/2013/04/19/responsive-multi-level-menu/
 [3]: https://github.com/codrops/ResponsiveMultiLevelMenu
