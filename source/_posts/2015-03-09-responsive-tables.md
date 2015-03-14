@@ -54,7 +54,7 @@ Here's how a few rows of the table look at wide sizes:
 ![Tabular data in a table. Many rows, with several columns](/images/responsive-table-wide.png)
 
 And here's how they look as "cards" when the screen narrows:
-![The same data now displayed as a series of cards. One column serves as the card title while the others are lower on the card.](images/responsive-table-narrow.png)
+![The same data now displayed as a series of cards. One column serves as the card title while the others are lower on the card.](/images/responsive-table-narrow.png)
 
 [1]: http://exisweb.net/responsive-table-plugins-and-patterns
 [2]: http://vegan-chicago.com
