@@ -7,6 +7,10 @@
         <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/js/us_map/lib/raphael.js"></script>
+        <script type="text/javascript" src="/js/us_map/jquery.usmap.js"></script>
+        <script type="text/javascript" src="/js/us_map.js"></script>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,6 +48,59 @@
             <div class="row-fluid">
                 <div class="span8">
                         <article>
+        <header>
+            <h2><a href="/blog/2014/03/18/github-pages-sculpin">Sculpin + Github Pages = &lt;?3</a></h2>
+        </header>
+        <div>
+            <p>So in order to get Sculpin to work, you have to have a certain file structure.</p>
+
+<p>But in order to get Github Pages to work you have to have a certain, <em>other</em>, file structure.</p>
+
+<p>A girl just can't win.</p>
+
+<p>But wait! What's that, you say? Show one face to Github, on the master branch (<a href="https://help.github.com/articles/user-organization-and-project-pages">or maybe the gh-pages branch</a>), which is where it requires all your publishable stuff to go, and then show Sculpin a totally different face by using a different branch name for all its stuff?</p>
+
+<p>Brilliant! But wait yet again! There's more, you say? The master branch with all the output stuff should go... <em>inside</em> a file on the sculpin branch?</p>
+
+<p>So, let me get this straight...</p>
+
+<pre>
+$ pwd
+/Users/binkovitz/bbinkovitz.github.io
+$ git branch
+* sculpin-source
+$ ls
+LICENSE     README.md   app     output_prod publish.sh  s3-publish.sh   s3.conf.dist    sculpin.json    sculpin.lock    source
+</pre>
+
+<p>...first I checkout branch sculpin-source and put all my Sculpin-friendly stuff in there and commit it...</p>
+
+<pre>
+$ cd output_prod/
+$ pwd
+/Users/binkovitz/bbinkovitz.github.io/output_prod
+$ git branch
+* master
+$ ls
+_posts      about       blog        components  css     favicon.ico index.html
+$
+</pre>
+
+<p>...and then after I generate my output, I go into that dir and commit that, and only that, to master?</p>
+
+<p>Okay if you say so.</p>
+
+        </div>
+                        <h4>Categories</h4>
+            <p class="categories">
+                    <a href="/blog/categories/sculpin">sculpin</a> ፨      <a href="/blog/categories/github">github</a> ፨      <a href="/blog/categories/blogging">blogging</a> ፨      <a href="/blog/categories/git">git</a>  
+            </p>
+                        <h4>Tags</h4>
+            <p class="tags">
+                    <a href="/blog/tags/weird%20repo%20nesting">weird repo nesting</a> ↂ      <a href="/blog/tags/strange">strange</a> ↂ      <a href="/blog/tags/but%20hey%20it%27s%20free">but hey it&#039;s free</a>  
+            </p>
+            </article>
+    <article>
         <header>
             <h2><a href="/blog/2014/03/08/symfony-vary-multiple">Journey to the center of the repo</a></h2>
         </header>
@@ -149,26 +206,9 @@ $this-&gt;assertEquals($response-&gt;headers-&gt;get('Vary', NULL, FALSE) , $res
                     <a href="/blog/tags/macros">macros</a> ↂ      <a href="/blog/tags/exciting">exciting</a>  
             </p>
             </article>
-    <article>
-        <header>
-            <h2><a href="/blog/2013/11/12/hello-world">You had me at hello, world.</a></h2>
-        </header>
-        <div>
-            <p>Today I started a blog with <a href="http://sculpin.io/">Sculpin</a> and <a href="http://pages.github.com/">GitHub Pages</a>. How exciting.</p>
-
-        </div>
-                        <h4>Categories</h4>
-            <p class="categories">
-                    <a href="/blog/categories/sculpin">sculpin</a> ፨      <a href="/blog/categories/github">github</a> ፨      <a href="/blog/categories/blogging">blogging</a>  
-            </p>
-                        <h4>Tags</h4>
-            <p class="tags">
-                    <a href="/blog/tags/hello%20world">hello world</a> ↂ      <a href="/blog/tags/exciting">exciting</a> ↂ      <a href="/blog/tags/links">links</a>  
-            </p>
-            </article>
     <nav>
         <a href="/page/2">Newer Posts</a><br />
-        <br />
+        <a href="/page/4">Older Posts</a><br />
     </nav>
                 </div>
                 <div class="span4 sidebar">

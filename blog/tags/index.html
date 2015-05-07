@@ -7,6 +7,10 @@
         <link href="/components/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/components/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/js/us_map/lib/raphael.js"></script>
+        <script type="text/javascript" src="/js/us_map/jquery.usmap.js"></script>
+        <script type="text/javascript" src="/js/us_map.js"></script>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +50,7 @@
                     <h2>Tags</h2>
 
 <div>
-        <a href="/blog/tags/responsive%20tables">responsive tables</a> ↂ      <a href="/blog/tags/mobile%20first">mobile first</a> ↂ      <a href="/blog/tags/palantir.net">palantir.net</a> ↂ      <a href="/blog/tags/graceful%20enhancement">graceful enhancement</a> ↂ      <a href="/blog/tags/epilepsy%20triggers">epilepsy triggers</a> ↂ      <a href="/blog/tags/html5">html5</a> ↂ      <a href="/blog/tags/codes%20of%20conduct">codes of conduct</a> ↂ      <a href="/blog/tags/links">links</a> ↂ      <a href="/blog/tags/fox%20valley%20drupal%20camp">fox valley drupal camp</a> ↂ      <a href="/blog/tags/lessons%20from%20the%20trenches">lessons from the trenches</a> ↂ      <a href="/blog/tags/codrops">codrops</a> ↂ      <a href="/blog/tags/responsive%20multi-level%20menu">responsive multi-level menu</a> ↂ      <a href="/blog/tags/jQuery">jQuery</a> ↂ      <a href="/blog/tags/weird%20repo%20nesting">weird repo nesting</a> ↂ      <a href="/blog/tags/strange">strange</a> ↂ      <a href="/blog/tags/but%20hey%20it%27s%20free">but hey it&#039;s free</a> ↂ      <a href="/blog/tags/HTTP%20headers">HTTP headers</a> ↂ      <a href="/blog/tags/pull%20request">pull request</a> ↂ      <a href="/blog/tags/contributing">contributing</a> ↂ      <a href="/blog/tags/macros">macros</a> ↂ      <a href="/blog/tags/exciting">exciting</a> ↂ      <a href="/blog/tags/hello%20world">hello world</a>  
+        <a href="/blog/tags/us%20map">us map</a> ↂ      <a href="/blog/tags/rapha%C3%ABl">raphaël</a> ↂ      <a href="/blog/tags/jquery">jquery</a> ↂ      <a href="/blog/tags/drupal">drupal</a> ↂ      <a href="/blog/tags/svg">svg</a> ↂ      <a href="/blog/tags/responsive%20tables">responsive tables</a> ↂ      <a href="/blog/tags/mobile%20first">mobile first</a> ↂ      <a href="/blog/tags/palantir.net">palantir.net</a> ↂ      <a href="/blog/tags/graceful%20enhancement">graceful enhancement</a> ↂ      <a href="/blog/tags/epilepsy%20triggers">epilepsy triggers</a> ↂ      <a href="/blog/tags/html5">html5</a> ↂ      <a href="/blog/tags/codes%20of%20conduct">codes of conduct</a> ↂ      <a href="/blog/tags/links">links</a> ↂ      <a href="/blog/tags/fox%20valley%20drupal%20camp">fox valley drupal camp</a> ↂ      <a href="/blog/tags/lessons%20from%20the%20trenches">lessons from the trenches</a> ↂ      <a href="/blog/tags/codrops">codrops</a> ↂ      <a href="/blog/tags/responsive%20multi-level%20menu">responsive multi-level menu</a> ↂ      <a href="/blog/tags/jQuery">jQuery</a> ↂ      <a href="/blog/tags/weird%20repo%20nesting">weird repo nesting</a> ↂ      <a href="/blog/tags/strange">strange</a> ↂ      <a href="/blog/tags/but%20hey%20it%27s%20free">but hey it&#039;s free</a> ↂ      <a href="/blog/tags/HTTP%20headers">HTTP headers</a> ↂ      <a href="/blog/tags/pull%20request">pull request</a> ↂ      <a href="/blog/tags/contributing">contributing</a> ↂ      <a href="/blog/tags/macros">macros</a> ↂ      <a href="/blog/tags/exciting">exciting</a> ↂ      <a href="/blog/tags/hello%20world">hello world</a>  
 </div>                </div>
                 <div class="span4 sidebar">
                     <div class="well">

@@ -51,3 +51,10 @@ footer.container {
     height:0 !important;
     padding-bottom: 56.25%;
 }
+
+.background-bubble {
+    background-color: #eee;
+    padding: .5em;
+    margin: .5em;
+    border-radius: .5em;
+}
